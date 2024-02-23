@@ -100,12 +100,8 @@ gdf_square = gpd.GeoDataFrame([1], geometry=[square_polygon], crs="EPSG:25833")
 # df_pixels.to_parquet('C:/Users/Isak9/OneDrive - NTNU/5. året NTNU/2. semester/Masteroppgave/ML/study_area.parquet', index=True)
 
 #%% Read in the dataframe created above
-
-#an idea is to start with only slope angle and see how the algorithm is doing, and then 
-#add the other parameters later. because now i get 0 true positives, which is not what we want. 
 df_study_area = pd.read_parquet('C:/Users/Isak9/OneDrive - NTNU/5. året NTNU/2. semester/Masteroppgave/ML/study_area.parquet', engine='fastparquet')
 landslides = pd.read_excel('C:/Users/Isak9/OneDrive - NTNU/5. året NTNU/2. semester/Masteroppgave/ml_landslide.xlsx')
-#soil er et tall? sjekk ut dette, tallet representerer en løsmasse. sjekk rød notisblokk.
 
 landslides['flow accumulation'] = landslides['flow accumulation'] * 10**4
 landslides['slope angle'] = landslides['slope angle'].round(0)
@@ -204,9 +200,3 @@ y_pred = clf.predict(X_test)
 print(classification_report(y_test, y_pred))
 print("Confusion Matrix:\n", confusion_matrix(y_test, y_pred))
 print("Accuracy:", accuracy_score(y_test, y_pred))
-
-
-
-
-
-
