@@ -99,11 +99,7 @@ y = df_balanced['landslide']
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=16)
 
 from sklearn.linear_model import LogisticRegression
-
-# instantiate the model (using the default parameters)
 logreg = LogisticRegression(random_state=16)
-
-# fit the model with data
 logreg.fit(X_train, y_train)
 
 y_pred = logreg.predict(X_test)
@@ -167,14 +163,65 @@ plt.text(0.6, 0.2, f'AUC = {auc:.2f}', fontsize=12, ha='center')
 plt.show()
 
 #MOST IMPORTANT FEATURES
-plt.figure()
-feature_imp = pd.Series(clf.feature_importances_, index=features_list).sort_values(ascending=False)
-feature_imp.plot.bar()
-plt.xticks(rotation=45) 
-plt.tight_layout() 
-plt.show()  
+# plt.figure()
+# feature_imp = pd.Series(clf.feature_importances_, index=features_list).sort_values(ascending=False)
+# feature_imp.plot.bar()
+# plt.xticks(rotation=45) 
+# plt.tight_layout() 
+# plt.show()  
 
 
+#PREDICTING THE REST OF THE STUDY AREA
+X_SA = df_study_area.drop(['x', 'y', 'x_min','y_min','x_max','y_max' ,'landslide'], axis=1)
+prediction_SA = clf.predict(X_SA)
+prediction_prob=clf.predict_proba(X_SA)
+df_study_area['LSM']= prediction_prob[:,1]
+df_filtered = df_study_area[df_study_area['LSM'] >= 0.5]
 
+#PLOTTING THE DF_FILTERED
+# colors = []
+# for prob in df_filtered['LSM']:
+#     if 0.5 <= prob <= 0.75:
+#         colors.append('yellow')
+#     elif 0.75 <= prob <= 1:
+#         colors.append('red')         
+# plt.figure(figsize=(10, 8))
+# plt.scatter(df_filtered['x'], df_filtered['y'], c=colors, marker='.')
 
+# plt.legend(handles=[plt.Line2D([0], [0], marker='o', color='w', markerfacecolor='yellow', markersize=10, label='0.5-0.75 PoL'),
+#                     plt.Line2D([0], [0], marker='o', color='w', markerfacecolor='red', markersize=10, label='0.75-1 PoL')])
+
+# plt.title('Landslide Susceptibility Map')
+# plt.xlabel('East [m]')
+# plt.ylabel('North [m]')
+# plt.show()
+
+unique_x = df_study_area['x'].unique()
+unique_y = df_study_area['y'].unique()
+unique_x.sort()
+unique_y.sort()
+num_rows = len(unique_y)
+num_cols = len(unique_x)
+raster_array = np.zeros((num_rows, num_cols), dtype=np.float32)
+min_y = unique_y.min()
+max_y = unique_y.max()
+
+for index, row in df_study_area.iterrows():
+    x_index = np.where(unique_x == row['x'])[0][0]
+    y_index = num_rows - 1 - np.where(unique_y == row['y'])[0][0]
+    raster_array[y_index, x_index] = row['LSM']
+
+from rasterio.transform import from_origin
+pixel_width = 10  
+pixel_height = 10 
+transform = from_origin(unique_x.min(), unique_y.max(), pixel_width, pixel_height)
+crs = "EPSG:25833"  
+dtype = raster_array.dtype
+count = 1  
+driver = 'GTiff'  
+
+output_tif_path = 'C:/Users/Isak9/OneDrive - NTNU/5. året NTNU/2. semester/Masteroppgave/susceptibility_map_LR.tif'
+
+with rasterio.open(output_tif_path, 'w', driver=driver, width=num_cols, height=num_rows, count=count, dtype=dtype, crs=crs, transform=transform) as dst:
+    dst.write(raster_array, 1) 
 
