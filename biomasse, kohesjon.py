@@ -57,7 +57,7 @@ cohesion_values[raster2 == 2] = cohesion_furu
 cohesion_values[raster2 == 3] = cohesion_lauv
 
 #%% sending the cohesion_values to a raster file
-output_raster_path = "C:/Users/Isak9/OneDrive - NTNU/5. året NTNU/2. semester/Masteroppgave/cohesion/cohesion.tif"
+output_raster_path = "C:/Users/Isak9/OneDrive - NTNU/5. året NTNU/2. semester/Masteroppgave/cohesion_10/cohesion_10.tif"
 
 affine = raster1_transform
 crs = src1.crs  
