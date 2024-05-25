@@ -126,9 +126,9 @@ from rasterio.enums import Resampling
 # output_excel_path = 'C:/Users/Isak9/OneDrive - NTNU/5. året NTNU/2. semester/Masteroppgave/sr16 raster/counts.xlsx'
 # counts_df.to_excel(output_excel_path)
 
-#%%Biomass histogram from biomasse script! values are from excel sheets from biomasse script
+#%%Biomass histogram from biomasse script! values are generated from excel sheet, NVE points included manually
 # bin_labels = ['No trees', '0-10', '10-20', '20-30', '30-40', '40-50', '50-60', '60-70']
-# num_landslides = [70,31,25,48,37,11,7,1] #fra total_points_aspect excel file, basert på koden ovenfor.
+# num_landslides = [70,31,25,48,37,11,7,1]
 # slope_frequencies = [0.4, 2.3, 1.2, 2.9, 3.9, 2.5, 3.1, 1]
 
 # # Create figure and axes
