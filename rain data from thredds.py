@@ -29,7 +29,7 @@ import pandas as pd
 from matplotlib.patches import Polygon
 from matplotlib.patches import Rectangle
 from rasterio.enums import Resampling
-#%%RETURN PERIOD, spezialisation project
+#%%RETURN PERIOD, specialization project
 #rr er rainfall, sdfswx er nok mer standard deviation
 #1dag
 #file_path = 'https://thredds.met.no/thredds/dodsC/senorge/seNorge_2018/return_levels/version_22.09/M100rr1d_seNorge2018_v2209_GEV_1991-2020.nc'
@@ -169,7 +169,7 @@ from rasterio.enums import Resampling
 # # Close the NetCDF file
 # f.close()
 
-#%%METEOROLOGISK SITUASJON, spezialisation project
+#%%METEOROLOGISK SITUASJON, specialization project
 # file_path = 'https://thredds.met.no/thredds/dodsC/metpparchive/2023/08/06/met_analysis_1_0km_nordic_20230806T17Z.nc'
 
 # f = netCDF4.Dataset(file_path, 'r')
