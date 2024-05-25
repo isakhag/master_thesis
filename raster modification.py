@@ -10,44 +10,6 @@ import numpy as np
 import pandas as pd
 from rasterio.transform import from_origin
 
-# # Original raster path
-# raster_path = 'C:/Users/Isak9/OneDrive - NTNU/5. året NTNU/2. semester/Masteroppgave/precip and saturation data/sat_aug_2_raster.tif'
-# # Modified raster path
-# modified_raster_path = 'C:/Users/Isak9/OneDrive - NTNU/5. året NTNU/2. semester/Masteroppgave/precip and saturation data/modified_sat_aug_2_raster.tif'
-
-# # Define your value range and the replacement value
-# lower_bound = 10**10
-# upper_bound = 10**18
-# replacement_value = 72
-
-# # Function to modify raster data
-# def modify_raster_data(raster_path, modified_raster_path, lower_bound, upper_bound, replacement_value):
-#     with rasterio.open(raster_path) as src:
-#         data = src.read(1)
-#         mask = (data >= lower_bound) & (data <= upper_bound)
-#         data[mask] = replacement_value
-#         out_meta = src.meta
-        
-#         with rasterio.open(modified_raster_path, 'w', **out_meta) as dest:
-#             dest.write(data, 1)
-
-# # Modify the raster
-# modify_raster_data(raster_path, modified_raster_path, lower_bound, upper_bound, replacement_value)
-
-# # Function to inspect modified raster data
-# def inspect_raster_data(modified_raster_path):
-#     with rasterio.open(modified_raster_path) as src:
-#         data = src.read(1)
-#         mask = (data >= lower_bound) & (data <= upper_bound)
-#         count_of_values_in_range = np.sum(mask)
-#         unique_values_in_range = np.unique(data[mask])
-
-#         print(f"Number of values between {lower_bound} and {upper_bound} in the modified file: {count_of_values_in_range}")
-#         print(f"Unique values between {lower_bound} and {upper_bound} in the modified file: {unique_values_in_range}")
-
-# # Inspect the modified raster
-# inspect_raster_data(modified_raster_path)
-
 #%% changing the nan data values in soil sat rasters to specified values
 # Define your file paths
 # raster_path = [
@@ -81,7 +43,7 @@ from rasterio.transform import from_origin
 # # Modify the raster files
 # modify_raster_data(raster_path, modified_raster_path, replacement_values)
 
-# # Adjusted function to inspect raster data
+# # Function to inspect raster data
 # def inspect_raster_data(modified_raster_path, replacement_value):
 #     with rasterio.open(modified_raster_path) as src:
 #         data = src.read(1)
@@ -102,7 +64,6 @@ from rasterio.transform import from_origin
 # # Loop through each modified raster to apply the inspection
 # for path, replacement in zip(modified_raster_paths, replacement_values):
 #     inspect_raster_data(path, replacement)
-
 
 #%% creating excel files to open them in arcgis and showing the release points on August 8 and 9
 
