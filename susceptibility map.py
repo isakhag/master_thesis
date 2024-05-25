@@ -33,10 +33,9 @@ import dask_geopandas as ddg
 from sklearn.metrics import roc_curve, roc_auc_score
 from sklearn.linear_model import LogisticRegression
 #%% RUNNING MODEL AND INVESTIGATING PERFORMANCE
-# df_study_area = pd.read_parquet('C:/Users/Isak9/OneDrive - NTNU/5. året NTNU/2. semester/Masteroppgave/ML/study_area_corrected.parquet', engine='fastparquet')
+# df_study_area = pd.read_parquet('C:/Users/Isak9/OneDrive - NTNU/5. året NTNU/2. semester/Masteroppgave/ML/study_area.parquet', engine='fastparquet')
 # landslides = pd.read_excel('C:/Users/Isak9/OneDrive - NTNU/5. året NTNU/2. semester/Masteroppgave/ml_landslide.xlsx')
 # read = df_study_area.iloc[:1000]
-# # root_cohesion = df_study_area['root cohesion']
 
 # landslides['flow accumulation'] = landslides['flow accumulation'] * 10**4 #to get the right unit, meter squared
 # #landslides['slope angle'] = landslides['slope angle'].round(0)
