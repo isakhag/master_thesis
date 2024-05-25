@@ -23,7 +23,7 @@ from rasterio.enums import Resampling
 #%% getting information about the different raster files! creating histograms and getting a good overview
 # of the release points and the forest details
 
-# # Define input file paths
+# # Define input file paths, collected from NIBIO.
 # input_shapefile = "C:/Users/Isak9/OneDrive - NTNU/5. året NTNU/2. semester/Masteroppgave/arcGIS/merged_points/NGI_HVL.shp"
 # input_rasters = [
 #     "C:/Users/Isak9/OneDrive - NTNU/5. året NTNU/2. semester/Masteroppgave/sr16 raster/sr16_34_SRRBMU.tif",
