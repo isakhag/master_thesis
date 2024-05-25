@@ -91,7 +91,7 @@ plt.show()
 
 #%% kohesjonsverdier i ulike landslide points basert på nye kohesjonsverdier!
 input_shapefile = "C:/Users/Isak9/OneDrive - NTNU/5. året NTNU/2. semester/Masteroppgave/arcGIS/merged_points/NVE_NGIHVL.shp"
-input_raster = "C:/Users/Isak9/OneDrive - NTNU/5. året NTNU/2. semester/Masteroppgave/cohesion/cohesion_10/cohesion_10.tif"
+input_raster = "C:/Users/Isak9/OneDrive - NTNU/5. året NTNU/2. semester/Masteroppgave/cohesion_10/cohesion_10.tif"
 
 square_coords = [(140438, 6886745), (140438, 6845000), (214000, 6845000), (214000, 6886745)]
 square_polygon = Polygon(square_coords)
