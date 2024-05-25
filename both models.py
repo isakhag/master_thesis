@@ -42,7 +42,7 @@ from skopt import BayesSearchCV
 from sklearn.metrics import roc_curve, roc_auc_score
 from sklearn.model_selection import StratifiedKFold
 #%% creating dataframes for ml models
-# df_study_area = pd.read_parquet('C:/Users/Isak9/OneDrive - NTNU/5. året NTNU/2. semester/Masteroppgave/ML/study_area_corrected.parquet', engine='fastparquet')
+# df_study_area = pd.read_parquet('C:/Users/Isak9/OneDrive - NTNU/5. året NTNU/2. semester/Masteroppgave/ML/study_area.parquet', engine='fastparquet')
 #landslides = pd.read_excel('C:/Users/Isak9/OneDrive - NTNU/5. året NTNU/2. semester/Masteroppgave/ml_landslide.xlsx')
 # read = df_study_area.iloc[:1000]
 
