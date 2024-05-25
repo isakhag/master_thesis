@@ -157,7 +157,8 @@ print("Confusion Matrix RF:\n", confusion_matrix(y_test, y_pred))
 # opt.fit(X_train, y_train)
 # print("Best parameters RF:", opt.best_params_)
 # print("Best score RF:", opt.best_score_)
-#%%LR
+
+#%% LR
 #X_lr = df_balanced.drop(['x', 'y','x_min','y_min','x_max','y_max' ,'landslide'], axis=1)
 X_lr = df_balanced.drop(['soil saturation august 8', 'soil saturation august 9', 'soil saturation august 10', 'soil saturation august 7',
                       'precipitation august 8', 'precipitation august 9', 'precipitation august 7', 'precipitation august 10',
@@ -250,6 +251,7 @@ print(f"Accuracy: {test_accuracy_lr}")
 print(f"Precision: {test_precision_lr}")
 print(f"Recall: {test_recall_lr}")
 print(f"F1 Score: {test_f1_lr}")
+
 #%% performance
 #X_with_const = add_constant(majority_needed.drop(['x', 'y', 'x_min','y_min','x_max','y_max' ,'landslide'], axis=1))
 X_with_const = df_balanced.drop(['soil saturation august 8', 'soil saturation august 9', 'soil saturation august 10', 'soil saturation august 7',
@@ -336,59 +338,3 @@ print('Average scores after 10 K-fold:', average_scores)
 #     plt.title(f'Tree {i+1}')
 #     plt.show()
 
-
-#%%PREDICTING THE STUDY AREA
-# X_SA = df_study_area.drop(['x', 'y', 'x_min','y_min','x_max','y_max' ,'landslide'], axis=1)
-# prediction_SA = logreg.predict(X_SA)
-# prediction_prob=logreg.predict_proba(X_SA)
-# df_study_area['LSM']= prediction_prob[:,1]
-# df_filtered = df_study_area[df_study_area['LSM'] >= 0.5]
-
-#PLOTTING THE DF_FILTERED
-# colors = []
-# for prob in df_filtered['LSM']:
-#     if 0.5 <= prob <= 0.75:
-#         colors.append('yellow')
-#     elif 0.75 <= prob <= 1:
-#         colors.append('red')         
-# plt.figure(figsize=(10, 8))
-# plt.scatter(df_filtered['x'], df_filtered['y'], c=colors, marker='.')
-
-# plt.legend(handles=[plt.Line2D([0], [0], marker='o', color='w', markerfacecolor='yellow', markersize=10, label='0.5-0.75 PoL'),
-#                     plt.Line2D([0], [0], marker='o', color='w', markerfacecolor='red', markersize=10, label='0.75-1 PoL')])
-
-# plt.title('Landslide Susceptibility Map')
-# plt.xlabel('East [m]')
-# plt.ylabel('North [m]')
-# plt.show()
-
-#SENDING THE PREDICTION OF THE TOTAL STUDY AREA TO A TIF-FILE
-# unique_x = df_study_area['x'].unique()
-# unique_y = df_study_area['y'].unique()
-# unique_x.sort()
-# unique_y.sort()
-# num_rows = len(unique_y)
-# num_cols = len(unique_x)
-# raster_array = np.zeros((num_rows, num_cols), dtype=np.float32)
-# min_y = unique_y.min()
-# max_y = unique_y.max()
-
-# for index, row in df_study_area.iterrows():
-#     x_index = np.where(unique_x == row['x'])[0][0]
-#     y_index = num_rows - 1 - np.where(unique_y == row['y'])[0][0]
-#     raster_array[y_index, x_index] = row['LSM']
-
-# from rasterio.transform import from_origin
-# pixel_width = 10  
-# pixel_height = 10 
-# transform = from_origin(unique_x.min(), unique_y.max(), pixel_width, pixel_height)
-# crs = "EPSG:25833"  
-# dtype = raster_array.dtype
-# count = 1  
-# driver = 'GTiff'  
-
-# output_tif_path = 'C:/Users/Isak9/OneDrive - NTNU/5. året NTNU/2. semester/Masteroppgave/susceptibility_map_LR.tif'
-
-# with rasterio.open(output_tif_path, 'w', driver=driver, width=num_cols, height=num_rows, count=count, dtype=dtype, crs=crs, transform=transform) as dst:
-#     dst.write(raster_array, 1) 
-#%%
