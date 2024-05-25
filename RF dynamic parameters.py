@@ -111,7 +111,7 @@ from sklearn.decomposition import PCA
 # majority_needed = majority.sample(n=num_majority_samples_needed, random_state=42)
 # df = pd.concat([majority_needed, minority], ignore_index=True)
 
-# df.to_excel('C:/Users/Isak9/OneDrive - NTNU/5. året NTNU/2. semester/Masteroppgave/ML/dataset_ratios/output.xlsx', index=False)
+# df.to_excel('C:/Users/Isak9/OneDrive - NTNU/5. året NTNU/2. semester/Masteroppgave/ML/dataset_ratios/output_depending_on_num_majority_samples_needed.xlsx', index=False)
 #%% implementing SMOTE in order to get more landslide points. 
 df_1 = pd.read_excel('C:/Users/Isak9/OneDrive - NTNU/5. året NTNU/2. semester/Masteroppgave/ML/dataset_ratios/ratio_copy.xlsx')
 X = df_1.drop(['x', 'y', 'x_min', 'y_min', 'x_max', 'y_max', 'landslide', 'soil'], axis=1)
