@@ -254,11 +254,14 @@ for day in [7, 8, 9, 10]:
     print(f"Probabilities for Day {day}: {y_pred_proba_day}")
     cm = confusion_matrix(y_test_day, y_pred_day)
     print(f"Confusion Matrix for Day {day}:\n{cm}\n")
-
-# def plot_roc_curve(y_test, y_scores, day_label):
+    
+#colors = {8: '#ff7f0e',  # Orange
+#          9: '#2ca02c'}  # Green
+    
+# def plot_roc_curve(y_test, y_scores, day_label, color):
 #     fpr, tpr, thresholds = roc_curve(y_test, y_scores)
 #     auc_score = auc(fpr, tpr)
-#     plt.plot(fpr, tpr, linewidth=2,  label=f'{day_label} ROC curve (AUC = {auc_score:.2f})')
+#     plt.plot(fpr, tpr, linewidth=2, color=color label=f'{day_label} ROC curve (AUC = {auc_score:.2f})')
     
 # # Start plotting
 # plt.figure(figsize=(10, 8))
@@ -275,7 +278,7 @@ for day in [7, 8, 9, 10]:
     
 #     print(f"Metrics for Day {day}:")
 #     print(f"Accuracy: {day_accuracy}, Precision: {day_precision}, Recall: {day_recall}, F1 Score: {day_f1}")
-#     plot_roc_curve(y_test_day, y_pred_proba_day, f'August {day}')
+#     plot_roc_curve(y_test_day, y_pred_proba_day, f'August {day}', colors[day])
 
 # plt.plot([0, 1], [0, 1], color='gray', linestyle='--', linewidth=2)
 # plt.xlim([0.0, 1.0])
